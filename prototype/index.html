@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scholars League Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <div class="brand">
+          <div class="brand-mark">SL</div>
+          <div>
+            <strong>Scholars League</strong>
+            <span>Nigeria JSS 1</span>
+          </div>
+        </div>
+
+        <nav class="nav-list" id="navList">
+          <button class="nav-item active" data-view="dashboard" type="button">
+            <span class="nav-icon dashboard-icon"></span>
+            Dashboard
+          </button>
+          <button class="nav-item" data-view="subjects" type="button">
+            <span class="nav-icon subject-icon"></span>
+            Subject Hub
+          </button>
+          <button class="nav-item" data-view="tutor" type="button">
+            <span class="nav-icon tutor-icon"></span>
+            AI Tutor
+          </button>
+          <button class="nav-item" data-view="leaderboard" type="button">
+            <span class="nav-icon rank-icon"></span>
+            Leaderboard
+          </button>
+          <button class="nav-item" data-view="insights" type="button">
+            <span class="nav-icon insight-icon"></span>
+            Insights
+          </button>
+          <button class="nav-item" data-view="challenges" type="button">
+            <span class="nav-icon challenge-icon"></span>
+            Challenges
+          </button>
+        </nav>
+
+        <div class="profile-strip">
+          <div class="avatar">AO</div>
+          <div>
+            <strong>Ada Okafor</strong>
+            <span>Gold League</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Term 1 sprint</p>
+            <h1 id="viewTitle">Home Dashboard</h1>
+          </div>
+          <div class="top-actions">
+            <label class="select-label" for="subjectFilter">Subject</label>
+            <select id="subjectFilter">
+              <option value="Mathematics">Mathematics</option>
+              <option value="English">English</option>
+              <option value="Basic Science">Basic Science</option>
+              <option value="Social Studies">Social Studies</option>
+            </select>
+          </div>
+        </header>
+
+        <section id="dashboardView" class="view active-view" aria-labelledby="viewTitle">
+          <div class="dashboard-grid">
+            <section class="hero-panel">
+              <div class="hero-copy">
+                <p class="eyebrow">Next best move</p>
+                <h2>Master fractions before Friday's class challenge.</h2>
+                <p>
+                  Your quiz trend shows strong arithmetic speed, but mixed fractions are holding your
+                  Mathematics rank back.
+                </p>
+                <button class="primary-action" id="heroStartQuiz" type="button">
+                  Start recommended quiz
+                </button>
+              </div>
+              <div class="rank-visual" aria-label="Current academic standing">
+                <div class="rank-number" id="dashboardRank">4</div>
+                <span>overall rank</span>
+                <div class="mini-bars" aria-hidden="true">
+                  <i></i><i></i><i></i><i></i><i></i>
+                </div>
+              </div>
+            </section>
+
+            <section class="metric-row" aria-label="Student summary">
+              <article class="metric-card">
+                <span>XP</span>
+                <strong id="xpValue">2,840</strong>
+                <div class="progress-track"><i id="xpProgress"></i></div>
+              </article>
+              <article class="metric-card">
+                <span>Streak</span>
+                <strong id="streakValue">5 days</strong>
+                <small>Two more days to unlock a badge.</small>
+              </article>
+              <article class="metric-card">
+                <span>Tier</span>
+                <strong id="tierValue">Gold</strong>
+                <small>160 XP from Platinum trial.</small>
+              </article>
+            </section>
+
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Today</p>
+                  <h2>Study Tasks</h2>
+                </div>
+              </div>
+              <div class="task-list" id="taskList"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Live class table</p>
+                  <h2>Top Students</h2>
+                </div>
+                <button class="text-button" data-jump="leaderboard" type="button">View all</button>
+              </div>
+              <div class="leader-mini" id="leaderMini"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="subjectsView" class="view" aria-labelledby="viewTitle">
+          <div class="subject-layout">
+            <section class="panel subject-main">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">NERDC mapped</p>
+                  <h2 id="subjectHeading">Mathematics</h2>
+                </div>
+                <div class="term-tabs" role="tablist" aria-label="Term selector">
+                  <button class="term-tab active" data-term="Term 1" type="button">Term 1</button>
+                  <button class="term-tab" data-term="Term 2" type="button">Term 2</button>
+                  <button class="term-tab" data-term="Term 3" type="button">Term 3</button>
+                </div>
+              </div>
+              <div class="topic-list" id="topicList"></div>
+            </section>
+
+            <aside class="panel mastery-panel">
+              <p class="eyebrow">Subject mastery</p>
+              <h2 id="masteryScore">76%</h2>
+              <div class="donut" id="masteryDonut" aria-hidden="true"></div>
+              <p id="masteryNote">
+                You are strongest in whole numbers. Fractions and measurement need attention.
+              </p>
+            </aside>
+          </div>
+        </section>
+
+        <section id="tutorView" class="view" aria-labelledby="viewTitle">
+          <div class="chat-shell">
+            <section class="panel chat-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Subject-aware AI</p>
+                  <h2 id="tutorSubject">Mathematics Tutor</h2>
+                </div>
+              </div>
+              <div class="chat-log" id="chatLog" aria-live="polite"></div>
+              <form class="chat-form" id="chatForm">
+                <input
+                  id="chatInput"
+                  type="text"
+                  autocomplete="off"
+                  placeholder="Ask about a topic, score, or example..."
+                />
+                <button class="primary-action" type="submit">Send</button>
+              </form>
+            </section>
+            <aside class="panel prompt-panel">
+              <p class="eyebrow">Quick prompts</p>
+              <button class="prompt-chip" type="button">Explain mixed fractions simply</button>
+              <button class="prompt-chip" type="button">Give me an exam-style example</button>
+              <button class="prompt-chip" type="button">What should I revise next?</button>
+            </aside>
+          </div>
+        </section>
+
+        <section id="leaderboardView" class="view" aria-labelledby="viewTitle">
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Real-time class rank</p>
+                <h2>JSS 1A Leaderboard</h2>
+              </div>
+              <div class="segmented-control" aria-label="Ranking mode">
+                <button class="segment active" data-board="overall" type="button">Overall</button>
+                <button class="segment" data-board="subject" type="button">Subject</button>
+              </div>
+            </div>
+            <div class="leaderboard-table" id="leaderboardTable"></div>
+          </section>
+        </section>
+
+        <section id="insightsView" class="view" aria-labelledby="viewTitle">
+          <div class="insight-grid">
+            <section class="panel">
+              <p class="eyebrow">AI prediction</p>
+              <h2 id="predictionTitle">Likely to finish 3rd this term</h2>
+              <p id="predictionText">
+                Two more Mathematics wins and one English practice streak could move you ahead of
+                Chinedu.
+              </p>
+              <div class="trend-chart" id="trendChart" aria-label="Score trend"></div>
+            </section>
+
+            <section class="panel">
+              <p class="eyebrow">Weak topics</p>
+              <h2>Recovery Plan</h2>
+              <div class="recovery-list" id="recoveryList"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="challengesView" class="view" aria-labelledby="viewTitle">
+          <div class="challenge-grid" id="challengeGrid"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="quizModal" aria-hidden="true">
+      <section class="quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
+        <button class="icon-button close-button" id="closeQuiz" type="button" aria-label="Close quiz">
+          x
+        </button>
+        <p class="eyebrow" id="quizMeta">Adaptive Test</p>
+        <h2 id="quizTitle">Fractions Checkpoint</h2>
+        <div id="quizBody"></div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
